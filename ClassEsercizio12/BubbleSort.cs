@@ -21,6 +21,7 @@ namespace ClassEsercizio12
                         temp = array[y];
                         array[y] = array[y + 1];
                         array[y + 1] = temp;
+
                     }
                 }
             }

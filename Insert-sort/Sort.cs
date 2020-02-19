@@ -33,6 +33,7 @@ namespace Insert_sort
                         dove++;
                         array(dove);
                         array[dove] = nuovo;
+
                     }
             
 

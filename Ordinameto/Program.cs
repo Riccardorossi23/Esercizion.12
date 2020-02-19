@@ -36,6 +36,7 @@ namespace Ordinameto
                 w.Flush();
             } 
             Console.ReadLine();
+
         }
     }
 }
