@@ -1,4 +1,6 @@
 ﻿using ClassEsercizio12;
+using ClassMergeSort;
+using Insert_sort;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,21 +21,31 @@ namespace Ordinameto
                 w.WriteLine("Algoritmo;Dimensione;Tempo");
                 foreach (int dim in dimensioni)
                 {
-                    int[] numeri = new int[dim];
+                    int[] array = new int[dim];
                     Random rnd = new Random();
                     for (int i = 0; i < dim; i++)
-                        numeri[i] = rnd.Next(0, 10000000);
+                        array[i] = rnd.Next(0, 10000000);
                     Stopwatch s = new Stopwatch();
                     s.Start();
-                    BubbleSort.Sort(numeri);
-                    Insert_sort.Insert(numeri);
+                    BubbleSort.Sort(array);
+                    Sort.Insert(array);
                     s.Stop();
                     long elapsed = s.ElapsedMilliseconds;
                     Console.WriteLine($"BubbleSort:{dim},{elapsed}");
                     w.WriteLine($"BubbleSort;{dim};{elapsed}");
-
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        array[i] = rnd.Next(0, 100000);
+                    }
+                    s.Start();
+                    Sort.Insert(array);
+                    s.Stop();
+                    elapsed = s.ElapsedMilliseconds;
+                    Console.WriteLine($"InsertionSort:{dim},{elapsed}");
+                    w.WriteLine($"InsertionSort; {dim}; {elapsed}");
                 }
                 w.Flush();
+                Console.WriteLine("fine!");
             } 
             Console.ReadLine();
 

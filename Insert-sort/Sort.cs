@@ -8,38 +8,24 @@ namespace Insert_sort
 {
     public class Sort
     {
-        public static void shiftR(int[] array, int buco)
+        public static void Insert(int[] array)
         {
-            int x;
-            for (x = array.Length- 2; x >= buco; x--)
+            int nuovo;//flag
+            int dove;//val
+            for (int i = 1; i < array.Length; i++)
             {
-                array[x + 1] = array[x];
-            }
-                
-        }
-        public static void Insert(int[]array)
-        {
-            int nuovo, x;
-            int dove;
-            for(x=0;x<array.Length;x++)
-            {
-                array[x] = 0;
-                for(x=0;x<array.Length;x++)
+                dove = array[i];
+                nuovo = i - 1;
+                while (nuovo >= 0 && array[nuovo] < dove)
                 {
-                    nuovo = (int)(Max * Math.random());
-                    dove = 0;
-                    while((array[dove]<nuovo)&&(array[dove]!=0))
-                    {
-                        dove++;
-                        array(dove);
-                        array[dove] = nuovo;
-
-                    }
-            
-
-            
+                    array[nuovo + 1] = array[nuovo];
+                    nuovo--;
                 }
+                array[nuovo + 1] = dove;
             }
+          
         }
+
     }
 }
+        
