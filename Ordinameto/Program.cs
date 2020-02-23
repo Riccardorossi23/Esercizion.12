@@ -1,6 +1,7 @@
 ﻿using ClassEsercizio12;
 using ClassMergeSort;
 using Insert_sort;
+using SelectionSort;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -43,6 +44,17 @@ namespace Ordinameto
                     elapsed = s.ElapsedMilliseconds;
                     Console.WriteLine($"InsertionSort:{dim},{elapsed}");
                     w.WriteLine($"InsertionSort; {dim}; {elapsed}");
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        array[i] = rnd.Next(0, 100000);
+                    }
+                    s.Start();
+                    Selection.Sort(array);
+                    s.Stop();
+                    elapsed = s.ElapsedMilliseconds;
+                    Console.WriteLine($"SelectionSort:{dim},{elapsed}");
+                    w.WriteLine($"SelectionSort; {dim}; {elapsed}");
+
                 }
                 w.Flush();
                 Console.WriteLine("fine!");

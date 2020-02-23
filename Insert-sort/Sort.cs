@@ -22,6 +22,7 @@ namespace Insert_sort
                     nuovo--;
                 }
                 array[nuovo + 1] = dove;
+
             }
           
         }

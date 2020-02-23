@@ -8,40 +8,67 @@ namespace ClassMergeSort
 {
     public class MergeSort
     {
-        static public void MainMerge(int[] array, int left, int mid, int right)
-        {
-            int[] temp = new int[25];
-            int i, eol, num, pos;
-            eol = (mid - 1);
-            pos = left;
-            num = (right - left + 1);
+        private int x;
+        public int[] array;
 
-            while ((left <= eol) && (mid <= right))
+        public void Sort(int sinistra, int destra)
+        {
+            sinistra = 0;
+            destra = x - 1;
+
+            int mezzo;
+
+            if (destra > sinistra)
             {
-                if (array[left] <= array[mid])
-                    temp[pos++] = array[left++];
-                else
-                    temp[pos++] = array[mid++];
-            }
-            while (left <= eol)
-                temp[pos++] = array[left++];
-            while (mid <= right)
-                temp[pos++] = array[mid++];
-            for (i = 0; i < num; i++)
-            {
-                array[right] = temp[right];
-                right--;
+                mezzo = (destra + sinistra) / 2;
+                Sort(sinistra, mezzo);
+                Sort(mezzo + 1, destra);
+               MergeSt(sinistra, mezzo + 1, destra);
             }
         }
-        static public void SortMerge(int[] array, int left, int right)
+
+        public void MergeSt(int sinistra, int mezzo, int destra)
         {
-            int mid;
-            if (right > left)
+            int i, sinistra_fine, num_elementi, tmp_pos;
+
+            sinistra_fine = mezzo - 1;
+            tmp_pos = sinistra;
+            num_elementi = destra - sinistra + 1;
+
+            while ((sinistra <= sinistra_fine) && (mezzo <= destra))
             {
-                mid = (right + left) / 2;
-                SortMerge(array, left, mid);
-                SortMerge(array, (mid + 1), right);
-                MainMerge(array, left, (mid + 1), right);
+                if (array[sinistra] <= array[mezzo])
+                {
+                    array[tmp_pos] = array[sinistra];
+                    tmp_pos = tmp_pos + 1;
+                    sinistra = sinistra + 1;
+                }
+                else
+                {
+                    array[tmp_pos] = array[mezzo];
+                    tmp_pos = tmp_pos + 1;
+                    mezzo = mezzo + 1;
+                }
+            }
+
+            while (sinistra <= sinistra_fine)
+            {
+                array[tmp_pos] = array[sinistra];
+                sinistra = sinistra + 1;
+                tmp_pos = tmp_pos + 1;
+            }
+
+            while (mezzo <= destra)
+            {
+                array[tmp_pos] = array[mezzo];
+                mezzo = mezzo + 1;
+                tmp_pos = tmp_pos + 1;
+            }
+
+            for (i = 0; i < num_elementi; i++)
+            {
+                array[destra] = array[destra];
+                destra = destra - 1;
             }
         }
     }

@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A9983CAC-E484-4304-90DC-5D2B0FEC9E7E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Ordinameto</RootNamespace>
-    <AssemblyName>Ordinameto</AssemblyName>
+    <ProjectGuid>{CFF04CE2-4172-4207-9E30-15D8CCD4B323}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SelectionSort</RootNamespace>
+    <AssemblyName>SelectionSort</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,32 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Selection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClassEsercizio12\ClassEsercizio12.csproj">
-      <Project>{4E6CAD4E-3693-4E59-BD73-0F7ECE58D9B7}</Project>
-      <Name>ClassEsercizio12</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClassMergeSort\ClassMergeSort.csproj">
-      <Project>{3aaa1641-e578-46e0-8f35-aa3617c4a848}</Project>
-      <Name>ClassMergeSort</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Insert-sort\Insert_sort.csproj">
-      <Project>{e883ab8d-f67d-4203-aca3-194a7752cc97}</Project>
-      <Name>Insert_sort</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SelectionSort\SelectionSort.csproj">
-      <Project>{cff04ce2-4172-4207-9e30-15d8ccd4b323}</Project>
-      <Name>SelectionSort</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
