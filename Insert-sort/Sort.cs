@@ -23,6 +23,7 @@ namespace Insert_sort
                 }
                 array[nuovo + 1] = dove;
 
+
             }
           
         }

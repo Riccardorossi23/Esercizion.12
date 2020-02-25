@@ -27,9 +27,8 @@ namespace Ordinameto
                     for (int i = 0; i < dim; i++)
                         array[i] = rnd.Next(0, 10000000);
                     Stopwatch s = new Stopwatch();
-                    s.Start();
+                    s.Restart();
                     BubbleSort.Sort(array);
-                    Sort.Insert(array);
                     s.Stop();
                     long elapsed = s.ElapsedMilliseconds;
                     Console.WriteLine($"BubbleSort:{dim},{elapsed}");
@@ -38,7 +37,7 @@ namespace Ordinameto
                     {
                         array[i] = rnd.Next(0, 100000);
                     }
-                    s.Start();
+                    s.Restart();
                     Sort.Insert(array);
                     s.Stop();
                     elapsed = s.ElapsedMilliseconds;
@@ -48,12 +47,22 @@ namespace Ordinameto
                     {
                         array[i] = rnd.Next(0, 100000);
                     }
-                    s.Start();
+                    s.Restart();
                     Selection.Sort(array);
                     s.Stop();
                     elapsed = s.ElapsedMilliseconds;
                     Console.WriteLine($"SelectionSort:{dim},{elapsed}");
                     w.WriteLine($"SelectionSort; {dim}; {elapsed}");
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        array[i] = rnd.Next(0, 100000);
+                    }
+                    s.Restart();
+                    MergeSort.Merge(array);
+                    s.Stop();
+                    elapsed = s.ElapsedMilliseconds;
+                    Console.WriteLine($"MergeSort:{dim},{elapsed}");
+                    w.WriteLine($"MergeSort;{dim}; {elapsed}");
 
                 }
                 w.Flush();

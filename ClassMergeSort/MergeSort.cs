@@ -8,68 +8,71 @@ namespace ClassMergeSort
 {
     public class MergeSort
     {
-        private int x;
-        public int[] array;
-
-        public void Sort(int sinistra, int destra)
+ 
+        public static int[] Merge(int[] array)
         {
-            sinistra = 0;
-            destra = x - 1;
-
-            int mezzo;
-
-            if (destra > sinistra)
+            int[] left;
+            int[] right;
+            int[] result = new int[array.Length];
+            if (array.Length <= 1)
+                return array;
+            int midPoint = array.Length / 2;
+            left = new int[midPoint];
+            if (array.Length % 2 == 0)
+                right = new int[midPoint];
+            else
+                right = new int[midPoint + 1];
+            for (int i = 0; i < midPoint; i++)
+                left[i] = array[i];
+            int x = 0;
+            for (int i = midPoint; i < array.Length; i++)
             {
-                mezzo = (destra + sinistra) / 2;
-                Sort(sinistra, mezzo);
-                Sort(mezzo + 1, destra);
-               MergeSt(sinistra, mezzo + 1, destra);
+                right[x] = array[i];
+                x++;
             }
+            left = MergeSort.Merge(left);
+            right = MergeSort.Merge(right);
+            result = Sort(left, right);
+            return result;
         }
-
-        public void MergeSt(int sinistra, int mezzo, int destra)
+        private static int[] Sort(int[] left, int[] right)
         {
-            int i, sinistra_fine, num_elementi, tmp_pos;
-
-            sinistra_fine = mezzo - 1;
-            tmp_pos = sinistra;
-            num_elementi = destra - sinistra + 1;
-
-            while ((sinistra <= sinistra_fine) && (mezzo <= destra))
+            int resultLength = right.Length + left.Length;
+            int[] result = new int[resultLength];
+            int indexLeft = 0, indexRight = 0, indexResult = 0;
+            while (indexLeft < left.Length || indexRight < right.Length)
             {
-                if (array[sinistra] <= array[mezzo])
+                if (indexLeft < left.Length && indexRight < right.Length)
                 {
-                    array[tmp_pos] = array[sinistra];
-                    tmp_pos = tmp_pos + 1;
-                    sinistra = sinistra + 1;
+                    if (left[indexLeft] <= right[indexRight])
+                    {
+                        result[indexResult] = left[indexLeft];
+                        indexLeft++;
+                        indexResult++;
+                    }
+                    else
+                    {
+                        result[indexResult] = right[indexRight];
+                        indexRight++;
+                        indexResult++;
+                    }
                 }
-                else
+                else if (indexLeft < left.Length)
                 {
-                    array[tmp_pos] = array[mezzo];
-                    tmp_pos = tmp_pos + 1;
-                    mezzo = mezzo + 1;
+                    result[indexResult] = left[indexLeft];
+                    indexLeft++;
+                    indexResult++;
+                }
+                else if (indexRight < right.Length)
+                {
+                    result[indexResult] = right[indexRight];
+                    indexRight++;
+                    indexResult++;
                 }
             }
-
-            while (sinistra <= sinistra_fine)
-            {
-                array[tmp_pos] = array[sinistra];
-                sinistra = sinistra + 1;
-                tmp_pos = tmp_pos + 1;
-            }
-
-            while (mezzo <= destra)
-            {
-                array[tmp_pos] = array[mezzo];
-                mezzo = mezzo + 1;
-                tmp_pos = tmp_pos + 1;
-            }
-
-            for (i = 0; i < num_elementi; i++)
-            {
-                array[destra] = array[destra];
-                destra = destra - 1;
-            }
+            return result;
         }
     }
 }
+
+        
