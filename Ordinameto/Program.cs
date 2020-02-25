@@ -16,6 +16,7 @@ namespace Ordinameto
     {
         static void Main(string[] args)
         {
+
              int[] dimensioni = {20, 50, 100, 500,1000,2000,5000,10000,20000, 30000,40000,50000,60000,100000};
             using(StreamWriter w=new StreamWriter("stat.csv",false,Encoding.UTF8))
             {

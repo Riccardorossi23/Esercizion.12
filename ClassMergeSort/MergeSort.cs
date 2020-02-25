@@ -11,6 +11,7 @@ namespace ClassMergeSort
  
         public static int[] Merge(int[] array)
         {
+
             int[] left;
             int[] right;
             int[] result = new int[array.Length];

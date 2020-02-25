@@ -10,8 +10,8 @@ namespace Insert_sort
     {
         public static void Insert(int[] array)
         {
-            int nuovo;//flag
-            int dove;//val
+            int nuovo;
+            int dove;
             for (int i = 1; i < array.Length; i++)
             {
                 dove = array[i];

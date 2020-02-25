@@ -23,6 +23,7 @@ namespace SelectionSort
                 array[i_min] = array[x];
                 array[x] = temp;
 
+
             }
         }
     }
